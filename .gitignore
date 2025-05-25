@@ -1,7 +1,19 @@
+# Compiled Python files
 __pycache__/
 *.pyc
 *.pyo
-.venv/
-venv/
+*.pyd
+
+# Distribution and build folders
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Executables created by pyinstaller or similar tools
+*.exe
+*.spec
+*.toc
 *.log
-*.tmp
+*.html # If your compiler generates HTML reports like warn-main.html
+*.zip # If your compiler creates a zip
