@@ -12,12 +12,15 @@ LIKE_COOLDOWN = 7
 
 
 def item_location_clicking(image_path):
+    # Initialize the mouse position
+    x, y = pyautogui.position()
     try:
         window_pop_up = pyautogui.locateOnScreen(image_path, confidence=0.8, grayscale=True)
         if window_pop_up:
             center_x = window_pop_up.left + window_pop_up.width / 2
             center_y = window_pop_up.top + window_pop_up.height / 2
             pyautogui.click(center_x, center_y)
+            pyautogui.moveTo(x, y)
             print(f"Clicked on '{image_path}' at ({int(center_x)}, {int(center_y)})")
             return True
         else:
@@ -55,6 +58,7 @@ def main():
     chest_coords = None
     likes_given_current_stream = 0
     while not chest_found:
+        # Searching for the chest image
         for template_path in CHEST_TEMPLATES:
             try:
                 chest_location = pyautogui.locateOnScreen(template_path, confidence=0.9, grayscale=True)
@@ -74,11 +78,12 @@ def main():
             except Exception as e:
                 print(f"An unexpected error occurred: {e}")
     while True:
+        # Initialize the mouse position
+        x, y = pyautogui.position()
         # Take the current screenshot of the defined region
         current_screenshot_pillow = pyautogui.screenshot(region=chest_coords)
         current_frame_array = np.array(current_screenshot_pillow)
         current_frame_gray = cv2.cvtColor(current_frame_array, cv2.COLOR_BGR2GRAY)
-
         # --- Comparing two images for motion detection ---
         difference = cv2.absdiff(previous_frame_gray, current_frame_gray)
         ret, thresh = cv2.threshold(difference, THRESHOLD_VALUE, 255, cv2.THRESH_BINARY)
@@ -92,6 +97,7 @@ def main():
 
             # Click the center of the chest
             pyautogui.click(center_x, center_y)
+            pyautogui.moveTo(x, y)
             time.sleep(20)
 
         # Skip window pop Up
@@ -110,7 +116,8 @@ def main():
                 time.sleep(LIKE_COOLDOWN)
 
         # Replacing the old frame with most recent one
-        previous_frame_gray = current_frame_gray
+        if previous_frame_gray is not None:
+            previous_frame_gray = current_frame_gray
 
         # Small delay to avoid CPU overload
         time.sleep(0.05)
