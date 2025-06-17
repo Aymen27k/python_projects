@@ -66,4 +66,3 @@ class Snake:
         self.create_snake()
         self.head = self.segments[0]
         self.tail = self.segments[-1]
-        self.is_paused = False
