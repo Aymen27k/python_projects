@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 
 THRESHOLD_VALUE = 50
-LOWER_MOVEMENT_THRESHOLD = 850
+LOWER_MOVEMENT_THRESHOLD = 400
 HIGHER_MOVEMENT_THRESHOLD = 1200
 LIKE_BUTTON_PATH = "D:/EDUCATION/Python/chest_hunter/chest_templates/like.jpg"
 MAX_LIKES_PER_STREAM = 20
@@ -98,14 +98,16 @@ def main():
             # Click the center of the chest
             pyautogui.click(center_x, center_y)
             pyautogui.moveTo(x, y)
-            time.sleep(20)
+            time.sleep(10)
 
         # Skip window pop Up
         clicked_window_pop = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/window_pop.jpg")
 
         clicked_got_it = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/got_it.jpg")
 
-        if clicked_window_pop or clicked_got_it:
+        clicked_woohoo = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/woohoo.jpg")
+
+        if clicked_window_pop or clicked_got_it or clicked_woohoo:
             print("One or more pop-up buttons were found and clicked. Adding a short delay.")
             time.sleep(1)
         if likes_given_current_stream < MAX_LIKES_PER_STREAM:

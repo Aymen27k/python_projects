@@ -2,8 +2,9 @@ from art import logo
 import random
 import os
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+CARDS = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 continue_playing = False
+credit = 1000
 
 
 ############### Blackjack Project #####################
@@ -29,7 +30,7 @@ def draw_cards(num_card=2):
     hand = []
     for x in range(num_card):
         index = random.randint(0, 11)
-        hand.append(cards[index])
+        hand.append(CARDS[index])
     return hand
 
 
@@ -51,6 +52,7 @@ def hand_value(hand):
         bust = True
     return hand_total, bust
 
+
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -60,15 +62,19 @@ def display_game_status(player_hand, player_total, computer_first_card):
     print(f"Computer's first card :{computer_first_card}")
 
 
-def display_final_game(player_hand, player_total, computer_hand, computer_total):
+def display_final_game(player_hand, player_total, player_credit, computer_hand, computer_total):
+    print(f"You have {player_credit} tokens")
     print(f"Your Final hand: {player_hand}, final score {player_total} ")
     print(f"Computer final hand: {computer_hand}, final score: {computer_total}")
 
 
 # Final winning Condition Check
-def who_win(player, computer):
+def who_win(player, player_credit, computer):
     if player > computer:
         print("You win 🎉")
+        player_credit += 200
+        print(f"You have won 200 Tokens, Your total is {player_credit}")
+        return player_credit
     elif player == computer:
         print("Its a draw 🙃")
     else:
@@ -92,7 +98,7 @@ def blackjack_win(player_hand, player_total, computer_hand, computer_total):
 
 
 # Main Game Logic
-def blackjack():
+def blackjack(credit):
     player_hit = True
     dealers_hit = True
     game_over = False
@@ -106,7 +112,7 @@ def blackjack():
         display_game_status(player_hand, player_total, computer_first_card)
         game_over = blackjack_win(player_hand, player_total, computer_hand, computer_total)
         if game_over:
-            display_final_game(player_hand, player_total, computer_hand, computer_total)
+            display_final_game(player_hand, player_total, credit, computer_hand, computer_total)
             player_hit = False
             dealers_hit = False
 
@@ -118,7 +124,7 @@ def blackjack():
             player_total, player_busted = hand_value(player_hand)
             display_game_status(player_hand, player_total, computer_first_card)
             if player_busted:
-                display_final_game(player_hand, player_total, computer_hand, computer_total)
+                display_final_game(player_hand, player_total, credit, computer_hand, computer_total)
                 print("You went over. You lose 😬")
                 player_hit = False
                 game_over = True
@@ -130,9 +136,9 @@ def blackjack():
             computer_total = hand_value(computer_hand)[0]
             if computer_total < 17:
                 computer_hand.append(draw_cards(num_card=1)[0])
-                computer_total, computer_busted= hand_value(computer_hand)
+                computer_total, computer_busted = hand_value(computer_hand)
                 if computer_busted:
-                    display_final_game(player_hand, player_total, computer_hand, computer_total)
+                    display_final_game(player_hand, player_total, credit, computer_hand, computer_total)
                     print("Computer went over. You Win 🎉")
                     dealers_hit = False
                     game_over = True
@@ -141,15 +147,18 @@ def blackjack():
 
     # Final score comparison
     if not game_over:
-        display_final_game(player_hand, player_total, computer_hand, computer_total)
-        who_win(player_total, computer_total)
-        
+        display_final_game(player_hand, player_total, credit, computer_hand, computer_total)
+        who_win(player_total, computer_total, credit)
+
 
 print("Created with passion ♥ by Aymen Kalaï Ezar. Copyright © 2025. All Rights Reserved.")
-while not continue_playing:
+while not continue_playing and credit != 0:
     start_game = input("Do you want to play a game of Blackjack? type 'y' or 'n': ").lower()
     if start_game == 'y':
+        credit -= 200
         clear_screen()
-        blackjack()
+        blackjack(credit)
     else:
         continue_playing = True
+if credit == 0:
+    print("You've lost all your credits! Game Over")
