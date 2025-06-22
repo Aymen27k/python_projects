@@ -2,6 +2,7 @@ import pyautogui
 import time
 import numpy as np
 import cv2
+import keyboard
 
 THRESHOLD_VALUE = 50
 LOWER_MOVEMENT_THRESHOLD = 400
@@ -54,6 +55,7 @@ CHEST_TEMPLATES = [
 
 def main():
     chest_found = False
+    running = True
     chest_location = None
     chest_coords = None
     likes_given_current_stream = 0
@@ -77,52 +79,60 @@ def main():
                 print(f"Error locating image {template_path}: {e}")
             except Exception as e:
                 print(f"An unexpected error occurred: {e}")
-    while True:
-        # Initialize the mouse position
-        x, y = pyautogui.position()
-        # Take the current screenshot of the defined region
-        current_screenshot_pillow = pyautogui.screenshot(region=chest_coords)
-        current_frame_array = np.array(current_screenshot_pillow)
-        current_frame_gray = cv2.cvtColor(current_frame_array, cv2.COLOR_BGR2GRAY)
-        # --- Comparing two images for motion detection ---
-        difference = cv2.absdiff(previous_frame_gray, current_frame_gray)
-        ret, thresh = cv2.threshold(difference, THRESHOLD_VALUE, 255, cv2.THRESH_BINARY)
-        movement_score = cv2.countNonZero(thresh)
-        print(movement_score)
-        # Comparing if movement is big enough to click
-        if LOWER_MOVEMENT_THRESHOLD < movement_score < HIGHER_MOVEMENT_THRESHOLD:
-            # Calculate the center x and y coordinates
-            center_x = chest_location.left + chest_location.width / 2
-            center_y = chest_location.top + chest_location.height / 2
+    while running:
+        try:
+            # Initialize the mouse position
+            x, y = pyautogui.position()
+            # Take the current screenshot of the defined region
+            current_screenshot_pillow = pyautogui.screenshot(region=chest_coords)
+            current_frame_array = np.array(current_screenshot_pillow)
+            current_frame_gray = cv2.cvtColor(current_frame_array, cv2.COLOR_BGR2GRAY)
+            # --- Comparing two images for motion detection ---
+            difference = cv2.absdiff(previous_frame_gray, current_frame_gray)
+            ret, thresh = cv2.threshold(difference, THRESHOLD_VALUE, 255, cv2.THRESH_BINARY)
+            movement_score = cv2.countNonZero(thresh)
+            print(movement_score)
+            # Comparing if movement is big enough to click
+            if LOWER_MOVEMENT_THRESHOLD < movement_score < HIGHER_MOVEMENT_THRESHOLD:
+                # Calculate the center x and y coordinates
+                center_x = chest_location.left + chest_location.width / 2
+                center_y = chest_location.top + chest_location.height / 2
 
-            # Click the center of the chest
-            pyautogui.click(center_x, center_y)
-            pyautogui.moveTo(x, y)
-            time.sleep(10)
+                # Click the center of the chest
+                pyautogui.click(center_x, center_y)
+                pyautogui.moveTo(x, y)
+                time.sleep(10)
 
-        # Skip window pop Up
-        clicked_window_pop = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/window_pop.jpg")
+            # Skip window pop Up
+            clicked_window_pop = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/window_pop.jpg")
 
-        clicked_got_it = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/got_it.jpg")
+            clicked_got_it = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/got_it.jpg")
 
-        clicked_woohoo = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/woohoo.jpg")
+            clicked_woohoo = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/woohoo.jpg")
 
-        if clicked_window_pop or clicked_got_it or clicked_woohoo:
-            print("One or more pop-up buttons were found and clicked. Adding a short delay.")
-            time.sleep(1)
-        if likes_given_current_stream < MAX_LIKES_PER_STREAM:
-            like_clicked_this_iteration = item_location_clicking(LIKE_BUTTON_PATH)
-            if like_clicked_this_iteration:
-                likes_given_current_stream += 1
-                print(f"Given {likes_given_current_stream}/{MAX_LIKES_PER_STREAM} likes in this stream.")
-                time.sleep(LIKE_COOLDOWN)
+            if clicked_window_pop or clicked_got_it or clicked_woohoo:
+                print("One or more pop-up buttons were found and clicked. Adding a short delay.")
+                time.sleep(1)
+            if likes_given_current_stream < MAX_LIKES_PER_STREAM:
+                like_clicked_this_iteration = item_location_clicking(LIKE_BUTTON_PATH)
+                if like_clicked_this_iteration:
+                    likes_given_current_stream += 1
+                    print(f"Given {likes_given_current_stream}/{MAX_LIKES_PER_STREAM} likes in this stream.")
+                    time.sleep(LIKE_COOLDOWN)
 
-        # Replacing the old frame with most recent one
-        if previous_frame_gray is not None:
-            previous_frame_gray = current_frame_gray
+            # Replacing the old frame with most recent one
+            if previous_frame_gray is not None:
+                previous_frame_gray = current_frame_gray
 
-        # Small delay to avoid CPU overload
-        time.sleep(0.05)
+            # Small delay to avoid CPU overload
+            time.sleep(0.05)
+        except KeyboardInterrupt:
+            print("\nCtrl+C detected! Initiating graceful shutdown...")
+            running = False
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+            running = False
+    print("Chest Hunter has stopped gracefully.")
 
 
 if __name__ == "__main__":
