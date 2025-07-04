@@ -2,14 +2,17 @@ import pyautogui
 import time
 import numpy as np
 import cv2
-import keyboard
+import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TEMPLATES_DIR = os.path.join(BASE_DIR, "chest_templates")
 THRESHOLD_VALUE = 50
 LOWER_MOVEMENT_THRESHOLD = 400
 HIGHER_MOVEMENT_THRESHOLD = 1200
-LIKE_BUTTON_PATH = "D:/EDUCATION/Python/chest_hunter/chest_templates/like.jpg"
+LIKE_BUTTON_PATH = os.path.join(TEMPLATES_DIR, "like.jpg")
 MAX_LIKES_PER_STREAM = 20
 LIKE_COOLDOWN = 7
+
 
 
 def item_location_clicking(image_path):
@@ -38,18 +41,16 @@ def item_location_clicking(image_path):
 
 
 CHEST_TEMPLATES = [
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/still_chest_player.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/chest_x10.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/small_chest.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/still_chest_player2.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/chest_x10_2.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/still_chest_x3.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/chest_x5.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/chest_regular.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/chest_x4.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/chest_x7.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/open_chest.jpg",
-    "D:/EDUCATION/Python/chest_hunter/chest_templates/chest_50.jpg",
+    os.path.join(TEMPLATES_DIR, "still_chest_player.jpg"),
+    os.path.join(TEMPLATES_DIR, "chest_x10.jpg"),
+    os.path.join(TEMPLATES_DIR, "small_chest.jpg"),
+    os.path.join(TEMPLATES_DIR, "chest_x10_2.jpg"),
+    os.path.join(TEMPLATES_DIR, "still_chest_x3.jpg"),
+    os.path.join(TEMPLATES_DIR, "chest_x5.jpg"),
+    os.path.join(TEMPLATES_DIR, "chest_regular.jpg"),
+    os.path.join(TEMPLATES_DIR, "chest_x4.jpg"),
+    os.path.join(TEMPLATES_DIR, "chest_x7.jpg"),
+    os.path.join(TEMPLATES_DIR, "chest_50.jpg"),
 ]
 
 
@@ -104,11 +105,11 @@ def main():
                 time.sleep(10)
 
             # Skip window pop Up
-            clicked_window_pop = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/window_pop.jpg")
+            clicked_window_pop = item_location_clicking(os.path.join(TEMPLATES_DIR, "window_pop.jpg"))
 
-            clicked_got_it = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/got_it.jpg")
+            clicked_got_it = item_location_clicking(os.path.join(TEMPLATES_DIR, "got_it.jpg"))
 
-            clicked_woohoo = item_location_clicking("D:/EDUCATION/Python/chest_hunter/chest_templates/woohoo.jpg")
+            clicked_woohoo = item_location_clicking(os.path.join(TEMPLATES_DIR, "woohoo.jpg"))
 
             if clicked_window_pop or clicked_got_it or clicked_woohoo:
                 print("One or more pop-up buttons were found and clicked. Adding a short delay.")
