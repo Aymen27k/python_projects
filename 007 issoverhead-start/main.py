@@ -1,13 +1,19 @@
+import os
+
+import dotenv
 import requests
 from datetime import datetime
 import smtplib
 import time
+from dotenv import load_dotenv
+
+dotenv.load_dotenv()
 
 MY_LAT = 36.4384994
 MY_LONG = 10.7210703
 ISS_TRACKER_API = "http://api.open-notify.org/iss-now.json"
-MY_MAIL = "ethancarter123x@gmail.com"
-MY_PASSWORD = "kyjlvbfzmdhxcbgh"
+MY_MAIL = os.getenv("MY_MAIL")
+MY_PASSWORD = os.getenv("MY_PASSWORD")
 
 
 
