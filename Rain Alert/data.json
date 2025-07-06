@@ -1,0 +1,19 @@
+{
+  "hourly": [
+    {
+      "dt": 1719764400,
+      "weather": [ { "id": 800, "main": "Clear", "description": "clear sky" } ],
+      "pop": 0.0
+    },
+    {
+      "dt": 1719768000,
+      "weather": [ { "id": 500, "main": "Rain", "description": "light rain" } ],
+      "pop": 0.6
+    },
+    {
+      "dt": 1719771600,
+      "weather": [ { "id": 803, "main": "Clouds", "description": "broken clouds" } ],
+      "pop": 0.3
+    }
+  ]
+}
