@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 import subprocess
 import threading
@@ -25,7 +26,9 @@ root_window = None
 canvas = None
 ping_canvas = None
 status_canvas = None
+my_new_thread = None
 is_combobox_visible = False
+stop_event = threading.Event()
 
 
 # --------------------- Logic ---------------------#
@@ -41,7 +44,10 @@ def update_gui(ping_value):
 
 
 def start_ping():
-    global ping_process, MORE_PING
+    global ping_process, MORE_PING, stop_event
+    if stop_event.is_set():
+        print("Ping aborted — shutdown in progress.")
+        return
     try:
         ping_process = subprocess.Popen(ping_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
                                         bufsize=1, creationflags=subprocess.CREATE_NO_WINDOW)
@@ -53,27 +59,47 @@ def start_ping():
                 equal_index = time_value.index("=")
                 latency = time_value[equal_index + 1: time_value.index("ms")]
                 root_window.after(1000, update_gui, latency)
-    except FileNotFoundError:
+    except FileNotFoundError or KeyboardInterrupt:
         print("Error: 'ping' command not found. Make sure it's in your system's PATH.")
         ping_process = None
         MORE_PING = False
-    except KeyboardInterrupt:
-        print("Quitting the Ping Checker Gracefully!")
-        ping_process = None
-        MORE_PING = False
+        ping_process.terminate()
+        stop_event.set()
+        my_new_thread.join()
 
 
-my_new_thread = threading.Thread(target=start_ping)
+def on_close():
+    global my_new_thread, ping_process, MORE_PING
+    stop_event.set()
+    MORE_PING = False
+    ping_process.terminate()
+    ping_process.wait(timeout=1)
+    my_new_thread.join(timeout=1)
+    print("Closed the Ping Checker Gracefully!")
+    root_window.destroy()
+    sys.exit(0)
+
+
+my_new_thread = threading.Thread(target=start_ping, daemon=True)
 
 
 def main():
     global root_window, ping_canvas, status_canvas, canvas, server_icons, actual_server_icon
-    IMAGE_DIR = "images"
+
+    # -------------------- Creating the images Directory --------------------------#
+    def resource_path(relative_path):
+        try:
+            base_path = sys._MEIPASS  # PyInstaller extracts here
+        except Exception:
+            base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
+
+    IMAGE_DIR = resource_path("images")
     # -------- Main Window setup ----------#
     root_window = tk.Tk()
-    root_window.title("Ping Checker")
+    root_window.title("Ping Checker | By Aymen Kalaï Ezar")
     root_window.config(bg="black", bd=5)
-    # root_window.resizable(0, 0)
+    root_window.resizable(0, 0)
     # Calculate screen X and Y coordinates
     screen_width = root_window.winfo_screenwidth()
     screen_height = root_window.winfo_screenheight()
@@ -146,11 +172,11 @@ def main():
         secondary_thread = threading.Thread(target=start_ping, daemon=True)
         secondary_thread.start()
 
-        #canvas.itemconfig(status_canvas, text=f"Status: Active - {selected_server}")
+        # canvas.itemconfig(status_canvas, text=f"Status: Active - {selected_server}")
         new_icon = server_icons.get(selected_server)
         if new_icon:
             actual_server_icon = new_icon
-            canvas.itemconfig(actual_server_icon_widget, image= actual_server_icon)
+            canvas.itemconfig(actual_server_icon_widget, image=actual_server_icon)
         else:
             print(f"Warning: No icon found for {selected_server}. Icon not updated.")
 
@@ -166,6 +192,7 @@ def main():
     canvas.tag_bind(actual_server_icon_widget, '<Button-1>', on_icon_click)
     server_combobox.bind("<<ComboboxSelected>>", on_server_selected)
     my_new_thread.start()
+    root_window.protocol("WM_DELETE_WINDOW", on_close)
     root_window.mainloop()
 
 
