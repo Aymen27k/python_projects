@@ -1,6 +1,8 @@
 import html
 from data import QuestionFetcher
 from question_model import Question
+from datetime import datetime
+import json
 
 TIMER = 15
 
@@ -55,3 +57,38 @@ class QuizBrain:
         self.score = 0
         self.question_number = 0
         self.extract_questions()
+
+    def saving_score(self, name):
+        player_name = name.capitalize()
+        new_entry = {
+            "name": player_name,
+            "score": self.score,
+            "timestamp": datetime.now().isoformat()
+        }
+        file_path = "leaderboard.json"
+        try:
+            # Reading JSON data
+            with open(file_path, "r") as file:
+                data = json.load(file)
+        except FileNotFoundError:
+            with open(file_path, "w") as file:
+                json.dump([new_entry], file, indent=4)
+        else:
+            try:
+                # Updating old data with new data
+                data.append(new_entry)
+                # Saving updated Data
+                with open(file_path, "w") as file:
+                    json.dump(data, file, indent=4)
+            except Exception as e:
+                print(f"Something went wrong while saving the score: {e}")
+
+    def get_sorted_scores(self):
+        try:
+            with open("leaderboard.json", "r") as file:
+                scores = json.load(file)
+            sorted_scores = sorted(scores, key=lambda x: x["score"], reverse=True)
+            return sorted_scores
+        except (FileNotFoundError, json.JSONDecoder):
+            return []
+
