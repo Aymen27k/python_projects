@@ -3,6 +3,7 @@ import tkinter as tk
 import subprocess
 import threading
 from tkinter import ttk
+from tkinter import messagebox
 import os
 from PIL import Image, ImageTk
 
@@ -28,6 +29,9 @@ ping_canvas = None
 status_canvas = None
 my_new_thread = None
 is_combobox_visible = False
+is_topmost = False
+status = False
+aot_status = None
 stop_event = threading.Event()
 
 
@@ -80,6 +84,19 @@ def on_close():
     sys.exit(0)
 
 
+def toggle_topmost():
+    global is_topmost, aot_status, status, root_window
+    is_topmost = not is_topmost
+    status = "ON" if is_topmost else "OFF"
+    canvas.itemconfig(aot_status, text="")
+    if is_topmost:
+        root_window.attributes('-topmost', True)
+    else:
+        root_window.attributes('-topmost', False)
+    aot_status = canvas.create_text(280, 360, font=("Consolas", 16), fill=FG_COLOR, text=f"Always on top {status}")
+    root_window.after(3000, lambda: canvas.itemconfigure(aot_status, text=""))
+
+
 my_new_thread = threading.Thread(target=start_ping, daemon=True)
 
 
@@ -97,9 +114,13 @@ def main():
     IMAGE_DIR = resource_path("images")
     # -------- Main Window setup ----------#
     root_window = tk.Tk()
-    root_window.title("Ping Checker | By Aymen Kalaï Ezar")
+    root_window.title("Ping Checker")
     root_window.config(bg="black", bd=5)
     root_window.resizable(0, 0)
+    root_window.bind('<Control-t>', lambda e: toggle_topmost())
+    root_window.bind('<Control-a>', lambda e: messagebox.showinfo("Ping Checker v1.0",
+                                                                  f"This Ping Checker was made by Aymen Kalaï Ezar\n  "
+                                                                  f"                                    With ♥"))
     # Calculate screen X and Y coordinates
     screen_width = root_window.winfo_screenwidth()
     screen_height = root_window.winfo_screenheight()
@@ -113,6 +134,7 @@ def main():
     ping_canvas = canvas.create_text(300, 200, font=("Consolas", 40), fill=FG_COLOR, text="---")
     status_canvas = canvas.create_text(0, 0, font=("Consolas", 16), fill=FG_COLOR, anchor=tk.NW,
                                        text="Status: Active - ")
+
     # Icons loading
     ICON_FILENAMES = {
         "Google DNS": "google.png",

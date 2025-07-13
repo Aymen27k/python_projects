@@ -1,0 +1,20 @@
+✨ Why I Built This
+
+Every time I launched my PC, I’d fire up Command Prompt and run:
+
+```bash
+ping 8.8.8.8 -t
+```
+
+I kept it tucked away on a secondary monitor just to keep an eye on my internet stability. But the default output was cluttered—with timestamps, TTLs, and other noise I didn’t need. What I truly cared about was one thing:
+
+> **The ping time — “time=XXms”**
+
+So I decided to build my own streamlined tool that focuses on just that—**latency clarity**. I gave it visual cues:  
+- 🟢 Green for ping under 40ms  
+- 🟡 Yellow for 40–79ms  
+- 🔴 Red for 80ms or higher  
+
+Then I thought: *What if I want to ping different servers without typing IPs every time?* So I added a dropdown to seamlessly switch targets—no restarts, no memorization, just smooth navigation.
+
+This project started as a simple itch… but became a refined utility I now trust every time I sit at my desk.
