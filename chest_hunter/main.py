@@ -14,7 +14,6 @@ MAX_LIKES_PER_STREAM = 20
 LIKE_COOLDOWN = 7
 
 
-
 def item_location_clicking(image_path):
     # Initialize the mouse position
     x, y = pyautogui.position()
@@ -51,6 +50,7 @@ CHEST_TEMPLATES = [
     os.path.join(TEMPLATES_DIR, "chest_x4.jpg"),
     os.path.join(TEMPLATES_DIR, "chest_x7.jpg"),
     os.path.join(TEMPLATES_DIR, "chest_50.jpg"),
+    os.path.join(TEMPLATES_DIR, "chest_x8.jpg")
 ]
 
 
