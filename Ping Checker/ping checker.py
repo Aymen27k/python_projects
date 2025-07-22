@@ -18,6 +18,8 @@ SERVER_OPTIONS = {
     "Localhost": "127.0.0.1",  # Good for testing
     "LocalNetwork": "192.168.1.1"  # Local Modem testing
 }
+disconnect_id = None
+is_disconnected = False
 server_icons = {}
 actual_server_icon = None
 ping_command = ['ping', '8.8.8.8', '-t']
@@ -47,8 +49,23 @@ def update_gui(ping_value):
         canvas.itemconfig(ping_canvas, text=ping, fill="red")
 
 
+def reconnect_gui():
+    canvas.itemconfig("disconnected", state="hidden")
+    canvas.itemconfig("ping", state="normal")
+
+
+def disconnect_gui():
+    canvas.itemconfig("ping", state="hidden")
+    canvas.itemconfig("disconnected", state="normal")
+
+
+def update_status():
+    internet_status = "Inactive" if is_disconnected else "Active"
+    canvas.itemconfig(status_canvas, text=f"Status: {internet_status} ")
+
+
 def start_ping():
-    global ping_process, MORE_PING, stop_event
+    global ping_process, MORE_PING, stop_event, is_disconnected
     if stop_event.is_set():
         print("Ping aborted — shutdown in progress.")
         return
@@ -58,11 +75,18 @@ def start_ping():
         while MORE_PING:
             line = ping_process.stdout.readline()
             if "time=" in line:
+                is_disconnected = False
+                update_status()
+                root_window.after(1000, reconnect_gui)
                 split_line = line.split(" ")
                 time_value = split_line[4]
                 equal_index = time_value.index("=")
                 latency = time_value[equal_index + 1: time_value.index("ms")]
                 root_window.after(1000, update_gui, latency)
+            elif "Request timed out" in line or "failure" in line or "unreachable" in line:
+                is_disconnected = True
+                update_status()
+                disconnect_id = root_window.after(1000, disconnect_gui)
     except FileNotFoundError or KeyboardInterrupt:
         print("Error: 'ping' command not found. Make sure it's in your system's PATH.")
         ping_process = None
@@ -106,7 +130,7 @@ def main():
     # -------------------- Creating the images Directory --------------------------#
     def resource_path(relative_path):
         try:
-            base_path = sys._MEIPASS  # PyInstaller extracts here
+            base_path = sys._MEIPASS
         except Exception:
             base_path = os.path.abspath(".")
         return os.path.join(base_path, relative_path)
@@ -118,9 +142,11 @@ def main():
     root_window.config(bg="black", bd=5)
     root_window.resizable(0, 0)
     root_window.bind('<Control-t>', lambda e: toggle_topmost())
-    root_window.bind('<Control-a>', lambda e: messagebox.showinfo("Ping Checker v1.0",
+    root_window.bind('<Control-a>', lambda e: messagebox.showinfo("Ping Checker v1.1",
                                                                   f"This Ping Checker was made by Aymen Kalaï Ezar\n  "
                                                                   f"                                    With ♥"))
+    disconnect_img = tk.PhotoImage(file=os.path.join(getattr(sys, '_MEIPASS', os.path.abspath("images")),
+                                                     "disconnected.png"))
     # Calculate screen X and Y coordinates
     screen_width = root_window.winfo_screenwidth()
     screen_height = root_window.winfo_screenheight()
@@ -131,9 +157,8 @@ def main():
     root_window.geometry('%dx%d+%d+%d' % (WIDTH, HEIGHT, x, y))
     # --------------------- Widgets ---------------------#
     canvas = tk.Canvas(width=600, height=400, bg="black", highlightthickness=0)
-    ping_canvas = canvas.create_text(300, 200, font=("Consolas", 40), fill=FG_COLOR, text="---")
-    status_canvas = canvas.create_text(0, 0, font=("Consolas", 16), fill=FG_COLOR, anchor=tk.NW,
-                                       text="Status: Active - ")
+    ping_canvas = canvas.create_text(300, 200, font=("Consolas", 40), fill=FG_COLOR, text="---", tags="ping")
+    status_canvas = canvas.create_text(0, 0, font=("Consolas", 16), fill=FG_COLOR, anchor=tk.NW)
 
     # Icons loading
     ICON_FILENAMES = {
@@ -210,6 +235,9 @@ def main():
         else:
             server_combobox.place_forget()
             is_combobox_visible = False
+
+    canvas.disconnect_img = disconnect_img
+    disconnect_canvas_img = canvas.create_image(300, 200, image=disconnect_img, state="hidden", tag="disconnected")
 
     canvas.tag_bind(actual_server_icon_widget, '<Button-1>', on_icon_click)
     server_combobox.bind("<<ComboboxSelected>>", on_server_selected)
