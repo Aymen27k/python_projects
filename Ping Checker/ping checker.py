@@ -145,8 +145,7 @@ def main():
     root_window.bind('<Control-a>', lambda e: messagebox.showinfo("Ping Checker v1.1",
                                                                   f"This Ping Checker was made by Aymen Kalaï Ezar\n  "
                                                                   f"                                    With ♥"))
-    disconnect_img = tk.PhotoImage(file=os.path.join(getattr(sys, '_MEIPASS', os.path.abspath("images")),
-                                                     "disconnected.png"))
+    disconnect_img = tk.PhotoImage(file=resource_path("images/disconnected.png"))
     # Calculate screen X and Y coordinates
     screen_width = root_window.winfo_screenwidth()
     screen_height = root_window.winfo_screenheight()
