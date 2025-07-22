@@ -139,6 +139,7 @@ def main():
     # -------- Main Window setup ----------#
     root_window = tk.Tk()
     root_window.title("Ping Checker")
+    root_window.iconbitmap(resource_path("images/ping.ico"))
     root_window.config(bg="black", bd=5)
     root_window.resizable(0, 0)
     root_window.bind('<Control-t>', lambda e: toggle_topmost())
