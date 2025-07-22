@@ -16,5 +16,6 @@ build/
 *.toc
 *.log
 *.env
+*.cache
 *.html # If your compiler generates HTML reports like warn-main.html
 *.zip # If your compiler creates a zip
