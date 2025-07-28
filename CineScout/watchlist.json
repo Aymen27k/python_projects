@@ -1,0 +1,21 @@
+{
+  "movies": [
+    "28 Years Later",
+    "F1: The Movie",
+    "Mission: Impossible - The Final Reckoning",
+    "Jurassic World: Rebirth",
+    "Superman",
+    "Sex on Phone",
+    "River of Blood",
+    "Avatar: Fire and Ash",
+    "Predator: Badlands",
+    "The Fantastic Four: First Steps",
+    "Zootopia 2",
+    "The Conjuring: Last Rites",
+    "Until Dawn",
+    "Elio",
+    "Oblivion",
+    "John Wick"
+  ],
+  "preferred_qualities": ["1080p", "2160p", "UHD"]
+}
