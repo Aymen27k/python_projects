@@ -1,12 +1,20 @@
+import errno
 import sys
+import platform
+import time
 import tkinter as tk
 import subprocess
+import re
 import threading
+import fcntl
+import select
+import queue
 from tkinter import ttk
 from tkinter import messagebox
 import os
 from PIL import Image, ImageTk
 
+# --------------------- Global Variables ---------------------#
 WIDTH = 600
 HEIGHT = 400
 BACKGROUND_COLOR = "#3b3d3f"
@@ -18,13 +26,21 @@ SERVER_OPTIONS = {
     "Localhost": "127.0.0.1",  # Good for testing
     "LocalNetwork": "192.168.1.1"  # Local Modem testing
 }
+ping_command = []
 disconnect_id = None
 is_disconnected = False
+DISCONNECTION_KEYWORDS = {
+    "Request timed out",
+    "Destination Host Unreachable",
+    "Network is unreachable",
+    "100% packet loss",
+    "unknown host",
+    "ping: sendmsg: No route to host",
+    "failure",
+}
 server_icons = {}
 actual_server_icon = None
-ping_command = ['ping', '8.8.8.8', '-t']
 ping_process = None
-MORE_PING = True
 root_window = None
 canvas = None
 ping_canvas = None
@@ -35,12 +51,25 @@ is_topmost = False
 status = False
 aot_status = None
 stop_event = threading.Event()
+ping_queue = queue.Queue()
+stop_event = threading.Event()
+optional_args={}
+current_os = platform.system()
+if current_os == "Windows":
+    ping_command = ["ping", '8.8.8.8', "-t"]
+    optional_args['creationflags'] = subprocess.CREATE_NO_WINDOW
+elif current_os == "Linux":
+    ping_command = ["ping", "-i", "1", "8.8.8.8"]
+else:
+    print(f"Warning: Unsupported OS detected: {current_os}. Defaulting to generic ping.")
 
 
 # --------------------- Logic ---------------------#
+
+
 def update_gui(ping_value):
     global canvas, ping_canvas
-    ping = int(ping_value)
+    ping = round(float(ping_value))
     if ping <= 40:
         canvas.itemconfig(ping_canvas, text=ping, fill="green")
     elif 40 < ping < 80:
@@ -64,51 +93,136 @@ def update_status():
     canvas.itemconfig(status_canvas, text=f"Status: {internet_status} ")
 
 
-def start_ping():
-    global ping_process, MORE_PING, stop_event, is_disconnected
-    if stop_event.is_set():
-        print("Ping aborted — shutdown in progress.")
-        return
+def start_ping_process_reader():
+    """    This function runs in a separate thread. It reads lines from the
+    ping process's stdout and puts them into the queue.
+    It will block until a line is available, but since it's in a thread,
+    it won't freeze the main GUI.
+    """
+    global ping_process, stop_event
+    ping_process = None
     try:
-        ping_process = subprocess.Popen(ping_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
-                                        bufsize=1, creationflags=subprocess.CREATE_NO_WINDOW)
-        while MORE_PING:
-            line = ping_process.stdout.readline()
-            if "time=" in line:
-                is_disconnected = False
-                update_status()
-                root_window.after(1000, reconnect_gui)
-                split_line = line.split(" ")
-                time_value = split_line[4]
-                equal_index = time_value.index("=")
-                latency = time_value[equal_index + 1: time_value.index("ms")]
-                root_window.after(1000, update_gui, latency)
-            elif "Request timed out" in line or "failure" in line or "unreachable" in line:
+        ping_process = subprocess.Popen(
+            ping_command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            bufsize=1,
+            **optional_args
+        )
+        ping_fd = ping_process.stdout.fileno()
+
+        fl = fcntl.fcntl(ping_fd, fcntl.F_GETFL)
+        fcntl.fcntl(ping_fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
+        buffer = ""
+        while not stop_event.is_set():
+            readable, _, _ = select.select([ping_fd], [], [], 1.0)
+            try:
+                data = os.read(ping_fd, 4096).decode('utf-8')
+                if not data:
+                    break
+                buffer += data
+                lines = buffer.split('\n')
+                buffer = lines.pop()
+                for line in lines:
+                    # Put the line into the thread-safe queue.
+                    ping_queue.put(line.strip())
+
+            except (IOError, OSError) as e:
+                    # Handle any I/O errors that might occur.
+                    if e.errno == errno.EAGAIN:
+                        ping_queue.put("DISCONNECTED")
+                        continue
+                    else:
+                        ping_queue.put(f"ERROR: {e}")
+                        break
+            
+            time.sleep(0.1)
+
+        # A sentinel value in the queue to signal completion.
+        ping_queue.put(None)
+
+    except (FileNotFoundError, OSError) as e:
+        # Handle the case where the ping command is not found or fails to start.
+        # This message will be handled by the main thread.
+        ping_queue.put(f"ERROR: {e}")
+
+    except Exception as e:
+        # Catch any other unexpected errors.
+        ping_queue.put(f"UNEXPECTED ERROR: {e}")
+    finally:
+        if ping_process and ping_process.poll() is None:
+            ping_process.terminate()
+            ping_process.wait(timeout=1)
+        ping_process = None
+    print("Ping process reader thread finished.")
+
+def check_ping_queue():
+    """
+    This function is called periodically by the main GUI thread.
+    It reads all available lines from the queue and processes them.
+    Because it uses `get_nowait`, it will not block the GUI.
+    """
+    global disconnect_id, is_disconnected, root_window
+    try:
+        while True:
+            # Get a line from the queue without blocking.
+            line = ping_queue.get_nowait()
+            print(f"The full line is : {line}")
+            is_disconnect_signal = (line == "DISCONNECTED" or 
+                                any(keyword in line for keyword in DISCONNECTION_KEYWORDS))
+            if line is None:  # Sentinel value means the thread is done.
+                print("Ping process has terminated gracefully.")
+                return
+            if line.startswith("ERROR:"):
+                messagebox.showerror("Ping Error", line[len("ERROR:"):])
+                return
+            
+            # Process the dissconnection.
+            if  is_disconnect_signal:
                 is_disconnected = True
                 update_status()
-                disconnect_id = root_window.after(1000, disconnect_gui)
-    except FileNotFoundError or KeyboardInterrupt:
-        print("Error: 'ping' command not found. Make sure it's in your system's PATH.")
-        ping_process = None
-        MORE_PING = False
-        ping_process.terminate()
-        stop_event.set()
-        my_new_thread.join()
+                root_window.after(1, disconnect_gui)
+                print(f"DEBUG: Disconnection keyword found: {line}")
+            # Process the reconnection
+            elif line == "RECONNECTED":
+                is_disconnected = False
+                update_status()
+                root_window.after(1, reconnect_gui)
+            # Process the regular ping line.
+            else:
+                is_disconnected = False
+                update_status()
+                match = re.search(r"time=(\d+\.?\d*)\s*ms", line)
+                if match:
+                    latency = match.group(1)
+                    # Update the GUI.
+                    update_gui(latency)
+                else:
+                    print(f"DEBUG: 'time=' found, but regex failed to parse: {line}")
+                # Ensure the disconnected image is hidden if a successful ping is received.
+                reconnect_gui()
 
+    except queue.Empty:
+        pass
+    finally:
+        root_window.after(100, check_ping_queue)
 
 def on_close():
-    global my_new_thread, ping_process, MORE_PING
+    """A function to handle the window closing event."""
+    global my_new_thread, ping_process
     stop_event.set()
-    MORE_PING = False
-    ping_process.terminate()
-    ping_process.wait(timeout=1)
-    my_new_thread.join(timeout=1)
+    if ping_process and ping_process.poll() is None:
+        ping_process.terminate()
+        ping_process.wait(timeout=1)
+    if my_new_thread and my_new_thread.is_alive():
+        my_new_thread.join(timeout=1)
     print("Closed the Ping Checker Gracefully!")
     root_window.destroy()
     sys.exit(0)
 
-
 def toggle_topmost():
+    """This function is for enabling and disabling the always on top feature"""
     global is_topmost, aot_status, status, root_window
     is_topmost = not is_topmost
     status = "ON" if is_topmost else "OFF"
@@ -121,10 +235,8 @@ def toggle_topmost():
     root_window.after(3000, lambda: canvas.itemconfigure(aot_status, text=""))
 
 
-my_new_thread = threading.Thread(target=start_ping, daemon=True)
-
-
 def main():
+    """The main function to set up the GUI and start the application."""
     global root_window, ping_canvas, status_canvas, canvas, server_icons, actual_server_icon
 
     # -------------------- Creating the images Directory --------------------------#
@@ -139,13 +251,15 @@ def main():
     # -------- Main Window setup ----------#
     root_window = tk.Tk()
     root_window.title("Ping Checker")
-    root_window.iconbitmap(resource_path("images/ping.ico"))
+    try:
+        photo_image = tk.PhotoImage(file=resource_path("images/icon.png"))
+        root_window.iconphoto(False, photo_image)
+    except Exception as e:
+        print(f"Error setting window icon: {e}")
     root_window.config(bg="black", bd=5)
     root_window.resizable(0, 0)
     root_window.bind('<Control-t>', lambda e: toggle_topmost())
-    root_window.bind('<Control-a>', lambda e: messagebox.showinfo("Ping Checker v1.1",
-                                                                  f"This Ping Checker was made by Aymen Kalaï Ezar\n  "
-                                                                  f"                                    With ♥"))
+    root_window.bind('<Control-a>', lambda e: messagebox.showinfo(f"Ping Checker v1.2 ({current_os})",f"This Ping Checker was made by Aymen Kalaï Ezar\nWith ♥"))
     disconnect_img = tk.PhotoImage(file=resource_path("images/disconnected.png"))
     # Calculate screen X and Y coordinates
     screen_width = root_window.winfo_screenwidth()
@@ -198,11 +312,14 @@ def main():
     server_combobox.place_forget()
 
     def on_server_selected(event=None):
-        global MORE_PING, ping_process, is_combobox_visible, ping_command, actual_server_icon, server_icons
+        """
+        Handles the combobox selection. It stops the old ping process and
+        starts a new one with the newly selected server.
+        """
+        global ping_process, is_combobox_visible, ping_command, actual_server_icon, server_icons, current_os
         selected_server = server_choice.get()
         server_ip = SERVER_OPTIONS[selected_server]
         # Terminating the old ping thread
-        MORE_PING = False
         if selected_server:
             server_combobox.place_forget()
             is_combobox_visible = False
@@ -212,11 +329,16 @@ def main():
                 my_new_thread.join(timeout=1)
 
         # Updating the server IP target
-        ping_command[1] = server_ip
+        if current_os == "Windows":
+            ping_command[1] = server_ip
+        elif current_os == "Linux":
+            ping_command[3] = server_ip
+        else:
+            print(f"Warning: Unsupported OS detected: {current_os}. Cannot set server IP.")
 
         # Starting a new thread with the new IP Address
-        MORE_PING = True
-        secondary_thread = threading.Thread(target=start_ping, daemon=True)
+        stop_event.clear()
+        secondary_thread = threading.Thread(target=start_ping_process_reader, daemon=True)
         secondary_thread.start()
 
         # canvas.itemconfig(status_canvas, text=f"Status: Active - {selected_server}")
@@ -241,7 +363,12 @@ def main():
 
     canvas.tag_bind(actual_server_icon_widget, '<Button-1>', on_icon_click)
     server_combobox.bind("<<ComboboxSelected>>", on_server_selected)
+    # Start the initial ping process and the queue checker.
+    stop_event.clear()
+    my_new_thread = threading.Thread(target=start_ping_process_reader, daemon=True)
     my_new_thread.start()
+    # The check_ping_queue function will automatically re-schedule itself.
+    root_window.after(100, check_ping_queue)
     root_window.protocol("WM_DELETE_WINDOW", on_close)
     root_window.mainloop()
 

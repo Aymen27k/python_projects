@@ -43,7 +43,7 @@ pip install Pillow
 3. Prepare Icons:
 Ensure your server icon .png files (e.g., google.png, cloudflare.png, opendns.png, localhost.png, localnetwork.png) are located in an images subdirectory within the project folder.
 4. Run the Application:
-python main.py
+python ping_checker.py
 
 💡 Usage
    1. Upon launching, the app will start pinging the default server (e.g., Google DNS) and display the latency in the center, color-coded based on its value.
