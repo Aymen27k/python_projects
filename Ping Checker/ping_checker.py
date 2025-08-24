@@ -168,7 +168,6 @@ def check_ping_queue():
         while True:
             # Get a line from the queue without blocking.
             line = ping_queue.get_nowait()
-            print(f"The full line is : {line}")
             is_disconnect_signal = (line == "DISCONNECTED" or 
                                 any(keyword in line for keyword in DISCONNECTION_KEYWORDS))
             if line is None:  # Sentinel value means the thread is done.
@@ -183,7 +182,6 @@ def check_ping_queue():
                 is_disconnected = True
                 update_status()
                 root_window.after(1, disconnect_gui)
-                print(f"DEBUG: Disconnection keyword found: {line}")
             # Process the reconnection
             elif line == "RECONNECTED":
                 is_disconnected = False
@@ -221,8 +219,8 @@ def on_close():
     root_window.destroy()
     sys.exit(0)
 
+
 def toggle_topmost():
-    """This function is for enabling and disabling the always on top feature"""
     global is_topmost, aot_status, status, root_window
     is_topmost = not is_topmost
     status = "ON" if is_topmost else "OFF"

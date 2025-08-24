@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <h2>{{5 * 6}}</h2>
+    <h3>Random Number: {{number}}</h3>
+    <a href="{{url_for('get_blog')}}">Go to blog</a>
+    <a href="{{url_for('guess', user_name='aymen')}}">Guess game</a>
+</body>
+<footer>
+   <div class="container mx-auto text-center text-sm">
+        <p>&copy; {{year}} Aymen Kalaï Ezar. All rights reserved.</p>
+  </div>
+</footer>
+</html>

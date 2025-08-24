@@ -21,7 +21,7 @@ class CarManager:
             new_car.penup()
             new_car.color(random.choice(COLORS))
             random_y = random.randint(-250, 250)
-            new_car.teleport(320, random_y)
+            new_car.goto(320, random_y)
             self.all_cars.append(new_car)
 
     def move_cars(self):

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Breakpoint Practice</title>
+  
+  <!-- This is the Bootstrap CSS link. Don't touch it! -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding-top: 2rem;
+    }
+    .box {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    .box-green {
+      background-color: #28a745;
+    }
+    .box-red {
+      background-color: #dc3545;
+    }
+    .container {
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bootstrap JavaScript bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+  <div class="container">
+    <h2>Exercise 1: Equal Columns</h2>
+    <p>Use the <code>col-md</code> prefix to make all three boxes have equal width on **medium screens (768px and up)**. On screens smaller than that, they should stack vertically.</p>
+    <div class="row">
+      <!-- TODO 1: Add a class to each of these divs -->
+      <div>
+        <div class="box col-md">Box 1</div>
+      </div>
+      <div>
+        <div class="box box-green col-md">Box 2</div>
+      </div>
+      <div>
+        <div class="box box-red col-md">Box 3</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    <h2>Exercise 2: Unequal Columns</h2>
+    <p>Use the <code>col-sm</code> prefix to make the first box take up <strong>8 columns</strong> and the second box take up <strong>4 columns</strong> on **small screens (576px and up)**. They should stack on smaller screens.</p>
+    <div class="row">
+      <!-- TODO 2: Add a class to the div inside this div -->
+      <div>
+        <div class="box col-sm-8">Box A</div>
+      </div>
+      <!-- TODO 3: Add a class to the div inside this div -->
+      <div>
+        <div class="box box-green col-sm-4">Box B</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    <h2>Exercise 3: Mixed Breakpoints</h2>
+    <p>This is a trickier one. Make the box take up <strong>12 columns</strong> on mobile, **8 columns** on small screens, and **4 columns** on medium screens.</p>
+    <div class="row">
+      <!-- TODO 4: Add multiple classes to this div -->
+      <div>
+        <div class="box box-red col-sm-12 col-lg-8 col-md-4">Box C</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

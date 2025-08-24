@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="41666615-d18d-46c4-88ee-be7a6b8073f8" name="Changes" comment="Add: CineScout a bot that scrap and match movies for me, Added both windows and Linux (deployment) version." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/python_projects" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/002 password-manager-start/main.py" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2w8cvwWdEY8oB1Zxq1ArCYDSr4b" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main.executor": "Run",
+    "Python.ping checker.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\EDUCATION\Python\hirst-painting" />
+      <recent name="D:\EDUCATION\Python\Hangman" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.ping checker">
+    <configuration name="main (3)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Ping Checker" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Ping Checker/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main (4)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Spotify musical Time Machine" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Spotify musical Time Machine/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Python" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ping checker" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Ping Checker" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Ping Checker/ping checker.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="quiz_brain" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/002 quizzler-app-start" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/002 quizzler-app-start/quiz_brain.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.ping checker" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.quiz_brain" />
+        <item itemvalue="Python.main (4)" />
+        <item itemvalue="Python.main (3)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.90" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="41666615-d18d-46c4-88ee-be7a6b8073f8" name="Changes" comment="" />
+      <created>1745426878189</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745426878189</updated>
+      <workItem from="1745426881593" duration="3854000" />
+      <workItem from="1745491215409" duration="13838000" />
+      <workItem from="1745587370255" duration="7222000" />
+      <workItem from="1745860780773" duration="57000" />
+      <workItem from="1745947327141" duration="2721000" />
+      <workItem from="1746022309623" duration="9347000" />
+      <workItem from="1746098510901" duration="445000" />
+      <workItem from="1746099350431" duration="18152000" />
+      <workItem from="1746192562940" duration="6996000" />
+      <workItem from="1746448629864" duration="8345000" />
+      <workItem from="1746464560039" duration="1474000" />
+      <workItem from="1746529205526" duration="8861000" />
+      <workItem from="1746621698700" duration="13160000" />
+      <workItem from="1746702212068" duration="12245000" />
+      <workItem from="1746729058979" duration="381000" />
+      <workItem from="1746729933418" duration="116000" />
+      <workItem from="1746795383709" duration="11309000" />
+      <workItem from="1746897084909" duration="687000" />
+      <workItem from="1747052929428" duration="8404000" />
+      <workItem from="1747136667868" duration="16034000" />
+      <workItem from="1747227136845" duration="9375000" />
+      <workItem from="1747305524928" duration="21150000" />
+      <workItem from="1747345028795" duration="145000" />
+      <workItem from="1747346505140" duration="52000" />
+      <workItem from="1747346828036" duration="266000" />
+      <workItem from="1747401160717" duration="2225000" />
+      <workItem from="1747656069194" duration="15848000" />
+      <workItem from="1747743605090" duration="3073000" />
+      <workItem from="1747830757168" duration="8766000" />
+      <workItem from="1747843847944" duration="6867000" />
+      <workItem from="1747854576826" duration="15000" />
+      <workItem from="1747864699645" duration="1067000" />
+      <workItem from="1747909855445" duration="94000" />
+      <workItem from="1747914988528" duration="18347000" />
+      <workItem from="1747951971637" duration="969000" />
+      <workItem from="1747953457831" duration="162000" />
+      <workItem from="1747953702341" duration="30000" />
+      <workItem from="1748005451881" duration="13502000" />
+      <workItem from="1748171294212" duration="4155000" />
+      <workItem from="1748262849486" duration="17391000" />
+      <workItem from="1748343744834" duration="19006000" />
+      <workItem from="1748367404722" duration="3808000" />
+      <workItem from="1748373193424" duration="636000" />
+      <workItem from="1748428428306" duration="16025000" />
+      <workItem from="1748456429070" duration="1446000" />
+      <workItem from="1748513751947" duration="22077000" />
+      <workItem from="1748611157767" duration="15242000" />
+      <workItem from="1748689242291" duration="6766000" />
+      <workItem from="1748864337539" duration="21637000" />
+      <workItem from="1748948778607" duration="6585000" />
+      <workItem from="1748961342156" duration="908000" />
+      <workItem from="1748964313642" duration="2794000" />
+      <workItem from="1749552829315" duration="5985000" />
+      <workItem from="1749559055800" duration="15000" />
+      <workItem from="1749559197195" duration="4905000" />
+      <workItem from="1749565370705" duration="10678000" />
+      <workItem from="1749635277430" duration="9117000" />
+      <workItem from="1749646315075" duration="10099000" />
+      <workItem from="1749681549071" duration="1597000" />
+      <workItem from="1749683734533" duration="900000" />
+      <workItem from="1749728113412" duration="15902000" />
+      <workItem from="1749753388690" duration="9321000" />
+      <workItem from="1749811269418" duration="11725000" />
+      <workItem from="1749835262484" duration="4345000" />
+      <workItem from="1749840300977" duration="112000" />
+      <workItem from="1749902568048" duration="6993000" />
+      <workItem from="1749912040232" duration="1743000" />
+      <workItem from="1749923425109" duration="8400000" />
+      <workItem from="1749937032601" duration="1952000" />
+      <workItem from="1749985488112" duration="62000" />
+      <workItem from="1749986607051" duration="3302000" />
+      <workItem from="1750017716448" duration="10615000" />
+      <workItem from="1750073611932" duration="16129000" />
+      <workItem from="1750111040121" duration="1935000" />
+      <workItem from="1750156976127" duration="18032000" />
+      <workItem from="1750187747120" duration="1722000" />
+      <workItem from="1750247638059" duration="16331000" />
+      <workItem from="1750274375929" duration="6084000" />
+      <workItem from="1750330645927" duration="22348000" />
+      <workItem from="1750425880370" duration="10389000" />
+      <workItem from="1750507095297" duration="4974000" />
+      <workItem from="1750538259734" duration="1219000" />
+      <workItem from="1750589201953" duration="13729000" />
+      <workItem from="1750622838386" duration="1220000" />
+      <workItem from="1750679835954" duration="8771000" />
+      <workItem from="1750698896416" duration="4158000" />
+      <workItem from="1750764755712" duration="13547000" />
+      <workItem from="1750800435173" duration="5119000" />
+      <workItem from="1750853132996" duration="14806000" />
+      <workItem from="1750938735275" duration="18055000" />
+      <workItem from="1751020557256" duration="25427000" />
+      <workItem from="1751113725608" duration="11826000" />
+      <workItem from="1751283951677" duration="16554000" />
+      <workItem from="1751327276483" duration="615000" />
+      <workItem from="1751366528875" duration="24391000" />
+      <workItem from="1751406702978" duration="1546000" />
+      <workItem from="1751457553436" duration="8804000" />
+      <workItem from="1751540316563" duration="18878000" />
+      <workItem from="1751625241989" duration="7269000" />
+      <workItem from="1751802016202" duration="452000" />
+      <workItem from="1751802969155" duration="3411000" />
+      <workItem from="1751889165181" duration="13077000" />
+      <workItem from="1751970805424" duration="18953000" />
+      <workItem from="1751997914938" duration="1943000" />
+      <workItem from="1752060605720" duration="2065000" />
+      <workItem from="1752066219314" duration="2137000" />
+      <workItem from="1752151084594" duration="2373000" />
+      <workItem from="1752153642445" duration="7258000" />
+      <workItem from="1752239681909" duration="13709000" />
+      <workItem from="1752321148887" duration="9462000" />
+      <workItem from="1752346578895" duration="1250000" />
+      <workItem from="1752403480238" duration="5871000" />
+      <workItem from="1752418272688" duration="4707000" />
+      <workItem from="1752428666964" duration="297000" />
+      <workItem from="1752677974793" duration="632000" />
+      <workItem from="1752750889750" duration="19835000" />
+      <workItem from="1752851366203" duration="1522000" />
+      <workItem from="1752860723994" duration="2946000" />
+      <workItem from="1752872354394" duration="2489000" />
+      <workItem from="1752934970659" duration="214000" />
+      <workItem from="1753096640758" duration="8785000" />
+      <workItem from="1753181584613" duration="19021000" />
+      <workItem from="1753208733952" duration="71000" />
+      <workItem from="1753356665691" duration="12445000" />
+      <workItem from="1753382774699" duration="4923000" />
+      <workItem from="1753391918440" duration="1496000" />
+      <workItem from="1753448838911" duration="619000" />
+      <workItem from="1753530484449" duration="2712000" />
+      <workItem from="1753613789462" duration="426000" />
+      <workItem from="1753703581537" duration="323000" />
+      <workItem from="1753878965310" duration="1473000" />
+      <workItem from="1753880995932" duration="525000" />
+      <workItem from="1753881555505" duration="1664000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: Add new learning projects and exercises">
+      <option name="closed" value="true" />
+      <created>1748171912045</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748171912045</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: Add new learning projects and exercises">
+      <option name="closed" value="true" />
+      <created>1748172710403</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748172710403</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: Add new learning projects and exercises">
+      <option name="closed" value="true" />
+      <created>1748173131151</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748173131151</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: Add new learning projects and exercises">
+      <option name="closed" value="true" />
+      <created>1748956387152</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748956387153</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: Add new learning projects and exercises">
+      <option name="closed" value="true" />
+      <created>1748956700556</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748956700556</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: added a win condition and player names">
+      <option name="closed" value="true" />
+      <created>1748967099040</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748967099040</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Created turtle cross road game">
+      <option name="closed" value="true" />
+      <created>1749566375303</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1749566375303</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: added high score feature and data.txt that keeps the scores stored.">
+      <option name="closed" value="true" />
+      <created>1749582265820</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1749582265820</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added many learning project, and my personal project &quot;Chest_hunter&quot;">
+      <option name="closed" value="true" />
+      <created>1750180490149</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750180490150</updated>
+    </task>
+    <task id="LOCAL-00010" summary="&quot;feat: Implement mouse cursor reset after actions&quot;">
+      <option name="closed" value="true" />
+      <created>1750182425831</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750182425831</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feature: made some modification to deploy my script into a .exe standalone file.">
+      <option name="closed" value="true" />
+      <created>1751640405710</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1751640405710</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add: many new learning projects concerning APIs and Sending mail(SMTPlib). Quizzler game (added Time and restart features)">
+      <option name="closed" value="true" />
+      <created>1751802347962</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1751802347962</updated>
+    </task>
+    <task id="LOCAL-00013" summary="security: revoked forgotten API endpoints and Tokens.">
+      <option name="closed" value="true" />
+      <created>1751805785173</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1751805785173</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Feat: I finished the core logic of the app by adding color themed ping text. Server status and icon next to it to let user know where the app is pinging.&#10;Worked on the dynamic threading. When user change server. It stop the old thread and process to initialize a new one and lunch again with the new Ip Address in the Ping command variable.&#10;Dynamic way to change the server by clicking on the server Icon to display a dropdown menu and change the server. Added the icons for each server and dynamically change the icon when user change the server">
+      <option name="closed" value="true" />
+      <created>1751991959481</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1751991959481</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Feat: I finished the core logic of the app by adding color themed ping text. Server status and icon next to it to let user know where the app is pinging.&#10;Worked on the dynamic threading. When user change server. It stop the old thread and process to initialize a new one and lunch again with the new Ip Address in the Ping command variable.&#10;Dynamic way to change the server by clicking on the server Icon to display a dropdown menu and change the server. Added the icons for each server and dynamically change the icon when user change the server&#10;Added the readme.txt for this project">
+      <option name="closed" value="true" />
+      <created>1751992095569</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1751992095569</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Feat: I finished the core logic of the app by adding color themed ping text. Server status and icon next to it to let user know where the app is pinging.&#10;Worked on the dynamic threading. When user change server. It stop the old thread and process to initialize a new one and lunch again with the new Ip Address in the Ping command variable.&#10;Dynamic way to change the server by clicking on the server Icon to display a dropdown menu and change the server. Added the icons for each server and dynamically change the icon when user change the server&#10;Added the readme.txt for this project&#10;Added the images and icon for this project">
+      <option name="closed" value="true" />
+      <created>1751992691599</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1751992691599</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat: Fixed some tasks that stay's on even after closing the GUI. And replaced the IMAGE_DIR from a relative path to a system path for deployment purpose.">
+      <option name="closed" value="true" />
+      <created>1752158015146</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1752158015146</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat: Added an input box that gets player's name and save it alongside his score to a JSON leaderboard. Also Created a leaderboard window that display top 5 scores at the end of each game. &#10;Various bug fixes and improvements.">
+      <option name="closed" value="true" />
+      <created>1752418353071</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1752418353071</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat: Add Always on Top feature and about popup">
+      <option name="closed" value="true" />
+      <created>1752423365097</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1752423365097</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat: added new chest hunt template of x8 multiplier chest.">
+      <option name="closed" value="true" />
+      <created>1752678277750</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1752678277750</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added course project about web Scrapping : 100 movies and 100 Billboard playlist maker on Spotify.">
+      <option name="closed" value="true" />
+      <created>1753203612899</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1753203612899</updated>
+    </task>
+    <task id="LOCAL-00022" summary="🔸 v1.1 — Canvas Clarity Update&#10;    • Added visual disconnect state (image + status text)&#10;    • Improved user feedback during offline events&#10;    • Structured visual logic using canvas tags and state toggling">
+      <option name="closed" value="true" />
+      <created>1753206824033</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1753206824033</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Bug fixes : a path issue fixed to make my ping checker app compilable">
+      <option name="closed" value="true" />
+      <created>1753208455158</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1753208455158</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat: Added an icon bitmap to the main root window.">
+      <option name="closed" value="true" />
+      <created>1753208792343</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1753208792343</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Add: CineScout a bot that scrap and match movies for me, Added both windows and Linux (deployment) version.">
+      <option name="closed" value="true" />
+      <created>1753703643843</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1753703643843</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: Add new learning projects and exercises" />
+    <MESSAGE value="feat: added a win condition and player names" />
+    <MESSAGE value="Created turtle cross road game" />
+    <MESSAGE value="feat: added high score feature and data.txt that keeps the scores stored." />
+    <MESSAGE value="Added many learning project, and my personal project &quot;Chest_hunter&quot;" />
+    <MESSAGE value="&quot;feat: Implement mouse cursor reset after actions&quot;" />
+    <MESSAGE value="feature: made some modification to deploy my script into a .exe standalone file." />
+    <MESSAGE value="Add: many new learning projects concerning APIs and Sending mail(SMTPlib). Quizzler game (added Time and restart features)" />
+    <MESSAGE value="security: revoked forgotten API endpoints and Tokens." />
+    <MESSAGE value="Feat: I finished the core logic of the app by adding color themed ping text. Server status and icon next to it to let user know where the app is pinging.&#10;Worked on the dynamic threading. When user change server. It stop the old thread and process to initialize a new one and lunch again with the new Ip Address in the Ping command variable.&#10;Dynamic way to change the server by clicking on the server Icon to display a dropdown menu and change the server. Added the icons for each server and dynamically change the icon when user change the server" />
+    <MESSAGE value="Feat: I finished the core logic of the app by adding color themed ping text. Server status and icon next to it to let user know where the app is pinging.&#10;Worked on the dynamic threading. When user change server. It stop the old thread and process to initialize a new one and lunch again with the new Ip Address in the Ping command variable.&#10;Dynamic way to change the server by clicking on the server Icon to display a dropdown menu and change the server. Added the icons for each server and dynamically change the icon when user change the server&#10;Added the readme.txt for this project" />
+    <MESSAGE value="Feat: I finished the core logic of the app by adding color themed ping text. Server status and icon next to it to let user know where the app is pinging.&#10;Worked on the dynamic threading. When user change server. It stop the old thread and process to initialize a new one and lunch again with the new Ip Address in the Ping command variable.&#10;Dynamic way to change the server by clicking on the server Icon to display a dropdown menu and change the server. Added the icons for each server and dynamically change the icon when user change the server&#10;Added the readme.txt for this project&#10;Added the images and icon for this project" />
+    <MESSAGE value="feat: Fixed some tasks that stay's on even after closing the GUI. And replaced the IMAGE_DIR from a relative path to a system path for deployment purpose." />
+    <MESSAGE value="feat: Added an input box that gets player's name and save it alongside his score to a JSON leaderboard. Also Created a leaderboard window that display top 5 scores at the end of each game. &#10;Various bug fixes and improvements." />
+    <MESSAGE value="feat: Add Always on Top feature and about popup" />
+    <MESSAGE value="feat: added new chest hunt template of x8 multiplier chest." />
+    <MESSAGE value="Added course project about web Scrapping : 100 movies and 100 Billboard playlist maker on Spotify." />
+    <MESSAGE value=" v1.1 — Canvas Clarity Update&#10;    • Added visual disconnect state (image + status text)&#10;    • Improved user feedback during offline events&#10;    • Structured visual logic using canvas tags and state toggling" />
+    <MESSAGE value="Bug fixes : a path issue fixed to make my ping checker app compilable" />
+    <MESSAGE value="feat: Added an icon bitmap to the main root window." />
+    <MESSAGE value="Add: CineScout a bot that scrap and match movies for me, Added both windows and Linux (deployment) version." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add: CineScout a bot that scrap and match movies for me, Added both windows and Linux (deployment) version." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Python$quiz_brain.coverage" NAME="quiz_brain Coverage Results" MODIFIED="1748275639128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/005 quiz-game-start" />
+    <SUITE FILE_PATH="coverage/Python$player.coverage" NAME="player Coverage Results" MODIFIED="1749554142440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/002 turtle-crossing-start" />
+    <SUITE FILE_PATH="coverage/Python$rock_paper_scissors.coverage" NAME="rock_paper_scissors Coverage Results" MODIFIED="1745594288095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main__3_.coverage" NAME="ping checker Coverage Results" MODIFIED="1752421808143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ping Checker" />
+    <SUITE FILE_PATH="coverage/Python$Number_guessing_game.coverage" NAME="Number_guessing_game Coverage Results" MODIFIED="1747830878827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1751803727116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/007 issoverhead-start" />
+    <SUITE FILE_PATH="coverage/Python$main__5_.coverage" NAME="main (5) Coverage Results" MODIFIED="1751802059134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/005 quiz-game-start" />
+    <SUITE FILE_PATH="coverage/Python$password_generator.coverage" NAME="password_generator Coverage Results" MODIFIED="1747053286876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$hangman_game.coverage" NAME="hangman_game Coverage Results" MODIFIED="1746465189052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$area_calc.coverage" NAME="area_calc Coverage Results" MODIFIED="1746533730586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$test.coverage" NAME="test Coverage Results" MODIFIED="1749635666938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$even_numbers.coverage" NAME="even_numbers Coverage Results" MODIFIED="1746023886622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$Dictionary_in_list.coverage" NAME="Dictionary_in_list Coverage Results" MODIFIED="1746712401420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$quiz_brain.coverage" NAME="quiz_brain Coverage Results" MODIFIED="1752249944541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/002 quizzler-app-start" />
+    <SUITE FILE_PATH="coverage/Python$main__3_.coverage" NAME="main (3) Coverage Results" MODIFIED="1752152450919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ping Checker" />
+    <SUITE FILE_PATH="coverage/main_py$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1752766354383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/002 bs4-start" />
+    <SUITE FILE_PATH="coverage/Python$prime_number_checker.coverage" NAME="prime_number_checker Coverage Results" MODIFIED="1746539390084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1752778255557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/006 Starting-Code-100-movies-to-watch-start/Starting Code - 100 movies to watch start" />
+    <SUITE FILE_PATH="coverage/Python$grading_program.coverage" NAME="grading_program Coverage Results" MODIFIED="1746706172028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$ping_checker.coverage" NAME="ping checker Coverage Results" MODIFIED="1753208758737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ping Checker" />
+    <SUITE FILE_PATH="coverage/Python$main__4_.coverage" NAME="main (4) Coverage Results" MODIFIED="1751626946232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Workout Tracker" />
+    <SUITE FILE_PATH="coverage/Python$fizzBuzz.coverage" NAME="fizzBuzz Coverage Results" MODIFIED="1746024600606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$write_to_file.coverage" NAME="write_to_file Coverage Results" MODIFIED="1749635302024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$main.coverage" NAME="main Coverage Results" MODIFIED="1753881439531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1753390614831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CineScout" />
+    <SUITE FILE_PATH="coverage/main_py$main__4_.coverage" NAME="main (4) Coverage Results" MODIFIED="1753197511814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Spotify musical Time Machine" />
+    <SUITE FILE_PATH="coverage/Python$Max_number.coverage" NAME="Max_number Coverage Results" MODIFIED="1745949462817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$function_output.coverage" NAME="function_output Coverage Results" MODIFIED="1746802618515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1751804027323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/002 password-manager-start" />
+    <SUITE FILE_PATH="coverage/Python$ping_checker.coverage" NAME="ping checker Coverage Results" MODIFIED="1753881999360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ping Checker" />
+    <SUITE FILE_PATH="coverage/Python$playground.coverage" NAME="playground Coverage Results" MODIFIED="1750084861463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Day-27" />
+    <SUITE FILE_PATH="coverage/Python$data.coverage" NAME="data Coverage Results" MODIFIED="1750942623696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/002 quizzler-app-start" />
+  </component>
+</project>
