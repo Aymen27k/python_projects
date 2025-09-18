@@ -18,5 +18,13 @@ build/
 *.env
 *.cache
 .venv/
-*.html # If your compiler generates HTML reports like warn-main.html
-*.zip # If your compiler creates a zip
+!templates/*.html
+*.zip
+*.pdf
+
+# Database files
+*.db
+
+# Untracked Projects
+001\ Starting-Files-coffee-and-wifi/
+
