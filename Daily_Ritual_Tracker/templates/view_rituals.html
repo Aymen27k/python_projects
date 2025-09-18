@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {%block content%}
+<div class="mt-3">
+  <h1>Rituals table</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Begin Time</th>
+        <th scope="col">Finish Time</th>
+        <th scope="col">Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rituals %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%endblock%}

@@ -1,0 +1,8 @@
+date,begin_time,finish_time,comment
+"28 August, 2025",13:20,16:00,I worked on saving the Data into a CSV file and improving the overall User experience.
+"29 August, 2025",10:30,14:20,Resting for today 😎
+
+"01 September, 2025",13:00,18:20,I have worked on a book collection course app. First using list of Dictionaries and then I included SQLite using Flask-SQLAlchemy! Good learning day 👍
+"02 September, 2025",12:00,18:00,"- Learned how to ""update"" and ""delete"" queries using SQLite and Flask Alchemy library.
+- Started to refactor ""Daily Ritual tracker"" app to turn it from simple CSV file storage to SQLite storage and faced many challenges."
+"18 September, 2025",13:00,13:20,Refactoring my first version of DRT to make it github friendly by creating .env and hiding the secret key there. Time to push it ! 

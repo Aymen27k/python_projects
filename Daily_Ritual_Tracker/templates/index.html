@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {%block content%}
+<div class="centered-page">
+  <div
+    class="container d-flex flex-column justify-content-center align-items-center h-100"
+  >
+    <h1 class="mb-4">Welcome home</h1>
+    <div class="d-flex justify-content-center">
+      <a href="{{ url_for('add_ritual') }}" class="btn btn-primary btn-lg m-2"
+        >Add a Ritual</a
+      >
+      <a
+        href="{{ url_for('view_rituals') }}"
+        class="btn btn-secondary btn-lg m-2"
+        >View Rituals</a
+      >
+    </div>
+  </div>
+</div>
+{%endblock%}
