@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <title>Login</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Login</h1>
-      <!-- This is where our form will go. -->
-
-      <form method="POST" action="/login">
-        {{ form.csrf_token }} {{ form.email.label }} {{ form.email(size=30) }}
-        {{ form.password.label }} {{ form.password(size=30) }} {{form.submit}}
-      </form>
-    </div>
-  </body>
-</html>
+{% extends 'bootstrap/base.html' %} {% import "bootstrap/wtf.html" as wtf %} {%
+block content %}
+<div class="container">
+  <h1>Login</h1>
+  <form method="POST" novalidate>{{ wtf.quick_form(form) }}</form>
+</div>
+{% endblock %}
