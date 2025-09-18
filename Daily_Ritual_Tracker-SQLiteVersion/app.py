@@ -1,4 +1,6 @@
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 from flask import Flask, render_template, redirect, url_for
 from database import db
 from models import Ritual, User
@@ -6,9 +8,12 @@ from ritual_form import RitualForm
 from auth_routes import auth
 from flask_login import LoginManager, login_required, current_user, logout_user
 
+
+load_dotenv()
+
 # Creating the flask app and configuring it
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '2ca041f6469a6d2f1b51316e614b71180660ddf1d1763beb6caaa63c0a3720de'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///drt_data.db"
 db.init_app(app)
 app.register_blueprint(auth)
