@@ -9,6 +9,7 @@ import threading
 import fcntl
 import select
 import queue
+import socket
 from tkinter import ttk
 from tkinter import messagebox
 import os
@@ -92,6 +93,18 @@ def update_status():
     internet_status = "Inactive" if is_disconnected else "Active"
     canvas.itemconfig(status_canvas, text=f"Status: {internet_status} ")
 
+def check_dns(domain="github.com"):
+    try:
+        ip = socket.gethostbyname(domain)
+        if ip in ("0.0.0.0", "127.0.0.1"):
+            ping_queue.put("DNS_FAILURE")
+            return False
+        return True
+    except socket.gaierror:
+        ping_queue.put("DNS_FAILURE")
+        return False
+
+
 
 def start_ping_process_reader():
     """    This function runs in a separate thread. It reads lines from the
@@ -129,14 +142,16 @@ def start_ping_process_reader():
                     ping_queue.put(line.strip())
 
             except (IOError, OSError) as e:
-                    # Handle any I/O errors that might occur.
-                    if e.errno == errno.EAGAIN:
-                        ping_queue.put("DISCONNECTED")
+                # Handle any I/O errors that might occur.
+                if e.errno == errno.EAGAIN:
+                    ping_queue.put("DISCONNECTED")
+                    # DNS resolution check
+                    if not check_dns():
+                        ping_queue.put("DNS_FAILURE")
                         continue
-                    else:
-                        ping_queue.put(f"ERROR: {e}")
-                        break
-            
+                else:
+                    ping_queue.put(f"ERROR: {e}")
+                    break
             time.sleep(0.1)
 
         # A sentinel value in the queue to signal completion.
@@ -175,9 +190,8 @@ def check_ping_queue():
                 return
             if line.startswith("ERROR:"):
                 messagebox.showerror("Ping Error", line[len("ERROR:"):])
-                return
-            
-            # Process the dissconnection.
+                return   
+            # Process the disconnection.
             if  is_disconnect_signal:
                 is_disconnected = True
                 update_status()
@@ -187,17 +201,23 @@ def check_ping_queue():
                 is_disconnected = False
                 update_status()
                 root_window.after(1, reconnect_gui)
+            elif line == "DNS_FAILURE":
+                is_disconnected = True
+                update_status()
+                root_window.after(1, disconnect_gui)
+
             # Process the regular ping line.
             else:
                 is_disconnected = False
                 update_status()
-                match = re.search(r"time=(\d+\.?\d*)\s*ms", line)
-                if match:
-                    latency = match.group(1)
-                    # Update the GUI.
-                    update_gui(latency)
-                else:
-                    print(f"DEBUG: 'time=' found, but regex failed to parse: {line}")
+                if "time" in line:
+                    match = re.search(r"time=(\d+\.?\d*)\s*ms", line)
+                    if match:
+                        latency = match.group(1)
+                        # Update the GUI.
+                        update_gui(latency)
+                    else:
+                        print(f"DEBUG: 'time=' found, but regex failed to parse: {line}")
                 # Ensure the disconnected image is hidden if a successful ping is received.
                 reconnect_gui()
 
