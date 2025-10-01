@@ -1,18 +1,14 @@
 {% extends 'base.html' %} {%block content%}
-<div class="centered-page">
-  <div class="container text-center">
-    <h1 class="mb-4">Hello, {{current_user.name}}</h1>
-    <div>
-      <a href="{{ url_for('add_ritual') }}" class="btn btn-primary btn-lg m-2"
-        >Add a Ritual</a
-      >
-      <a
-        href="{{ url_for('view_rituals') }}"
-        class="btn btn-secondary btn-lg m-2"
-        >View Rituals</a
-      >
-    </div>
-  </div>
+
+<div class="container text-center">
+  <h1 class="mb-4">Hello, {{current_user.name}}</h1>
+
+  <a href="{{ url_for('add_ritual') }}" class="btn btn-primary btn-lg m-2"
+    >Add a Ritual</a
+  >
+  <a href="{{ url_for('view_rituals') }}" class="btn btn-secondary btn-lg m-2"
+    >View Rituals</a
+  >
 </div>
 
 {%endblock%}
