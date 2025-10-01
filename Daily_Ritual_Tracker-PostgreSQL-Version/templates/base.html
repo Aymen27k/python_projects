@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384..."
+      crossorigin="anonymous"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='favicon.png') }}"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+
+    <title>{%block title%}Daily Ritual Tracker{%endblock%}</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        {%if current_user.is_authenticated%}
+        <a class="navbar-brand" href="{{ url_for('user_hub') }}">DRT</a>
+        {%else%}
+        <a class="navbar-brand" href="{{ url_for('home') }}">DRT</a>
+        {% endif %}
+        <div class="nav-links">
+          {%if current_user.is_authenticated%}
+          <a href="{{ url_for('add_ritual') }}">Add Ritual</a>
+          <a href="{{ url_for('view_rituals') }}">View Rituals</a>
+          {% if request.endpoint != 'user_hub' %}
+          <a href="{{ url_for('user_hub') }}">{{ current_user.name }}'s Hub</a>
+          {% endif %}
+
+          <a class="logout-link" href="{{ url_for('auth.logout') }}">Logout</a>
+          {%else%}
+          <a href="{{ url_for('auth.login') }}">Login</a>
+          <a href="{{ url_for('auth.register') }}">Register</a>
+          {%endif%}
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">{%block content%}{%endblock%}</div>
+  </body>
+</html>
