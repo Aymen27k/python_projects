@@ -11,8 +11,8 @@ auth = Blueprint('auth',__name__)
 @auth.route("/register", methods=["GET","POST"])
 def register():
     if request.method == "POST":
-        email = request.form.get("email")
-        name = request.form.get("name")
+        email = request.form.get("email").lower()
+        name = request.form.get("name").title()
         password = request.form.get("password")
 
         # In case where the User is already registered in the DB
@@ -33,7 +33,8 @@ def register():
 @auth.route("/login", methods=["GET","POST"])
 def login():
     if request.method == "POST":
-        email = request.form.get("email")
+        email = request.form.get("email").lower()
+        print(email)
         password = request.form.get("password")
 
         user = User.query.filter_by(email=email).first()

@@ -33,6 +33,8 @@ with app.app_context():
 # Home Route 
 @app.route("/")
 def home():
+    if current_user.is_authenticated:
+        return redirect(url_for('user_hub'))
     return render_template ("index.html")
 
 @app.route("/user_hub")
