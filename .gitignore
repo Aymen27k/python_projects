@@ -21,10 +21,13 @@ build/
 !templates/*.html
 *.zip
 *.pdf
+*.tar
 
 # Database files
 *.db
+*.sql
 
 # Untracked Projects
 001\ Starting-Files-coffee-and-wifi/
+leetcode.py
 
