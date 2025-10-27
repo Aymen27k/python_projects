@@ -1,0 +1,28 @@
+Operating System Market Share Analysis: Tunisia (Sept 2024 - Sept 2025)
+Executive Summary: The Windows 10 Migration Effect
+
+This analysis investigates the desktop OS market in Tunisia over a 13-month period, focusing on the hypothesis that the impending Windows 10 End-of-Support (scheduled for October 2025) would destabilize the market.
+
+The data confirms this hypothesis. The market saw a significant collapse in Windows' monthly change rate, which was immediately and almost entirely absorbed by Apple Desktop (macOS). The market share loss did not benefit open-source or minor desktop OSes (Linux and Chrome OS), reinforcing that migration is driven by commercial hardware purchases (Windows PC replacement with Apple hardware).
+Key Findings and Evidence
+1. Windows Dominance and Volatility
+
+    Overall Decline: Windows, which started the period above 87% market share, saw a net decline, falling below the 80% mark.
+
+    The Critical Drop (June 2025): The "Monthly Change" chart shows a clear spike in volatility. In a single month (June 2025), Windows experienced a dramatic loss of approximately 8.58 percentage points of market share. This sharp drop cannot be explained by seasonal changes and directly correlates with the increasing pressure and media coverage surrounding the Windows 10 cutoff date.
+
+2. Clear Beneficiary: Apple Desktop
+
+    The analysis proves that the loss of Windows share did not scatter across the market; it converged on a single competitor.
+
+    The "Monthly Evolution" chart shows the Apple Desktop line spiking sharply upward immediately following the Windows crash in June 2025. The Apple line shows two periods of significant monthly gain, perfectly aligning with the two major dips in Windows usage.
+
+    The overall trend confirms a sustained, long-term migration to Apple Desktop, accelerating closer to the final support date.
+
+3. Minor Players Remain Stable
+
+    Linux and Chrome OS showed little to no correlation with the major swings in the market. Their "Monthly Change" lines remained flat and close to zero throughout the 13-month period, indicating they are not viable alternatives for the migrating Windows user base in this region.
+
+Conclusion and Forecast
+
+The Tunisian desktop OS market is actively reacting to the Windows 10 End-of-Support. The resulting user migration is primarily driving growth for Apple Desktop and its hardware ecosystem. The trend shows that as the deadline approaches, market share losses for Windows will continue to be converted into gains for Apple Desktop.
