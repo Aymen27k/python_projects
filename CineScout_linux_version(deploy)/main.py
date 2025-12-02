@@ -1,11 +1,12 @@
 import os
+import json
+from datetime import datetime
 import smtplib
 from email.message import EmailMessage
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
-import requests
-import json
-from datetime import datetime
+from selenium_fetcher import get_html
+
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 URL = "https://1337x.to/popular-movies"
@@ -20,12 +21,9 @@ NOTIFIED_MOVIES_PATH = os.path.join(script_dir, 'notified_movies.json')
 LOG_PATH = os.path.join(script_dir, 'cron_output.log')
 
 
-# ------------- Scrapping Torrent website for last movies Titles ----------------#
-def scrap_movies():
-    response = requests.get(URL)
-    data = response.text
-
-    soup = BeautifulSoup(data, 'html.parser')
+# ------------- Scraping Torrent website for last movies Titles ----------------#
+def scrap_movies(html: str):
+    soup = BeautifulSoup(html, 'html.parser')
     movies_full_title = soup.select('a[href^="/torrent/"]')
     movie_title = [tag.get_text(strip=True) for tag in movies_full_title]
     return movie_title
@@ -43,16 +41,25 @@ def reading_json(path):
 
 def find_matches():
     global match
-    available_movies = scrap_movies()
+    html_text = get_html(URL)
+    available_movies = scrap_movies(html_text)
+
+    if not available_movies:
+        # Explicitly log failure case
+        log_to_cron_output("⚠️ No movies scraped — possible fetch or parse issue.")
+        return [], available_movies
+
     wanted_movies = reading_json(WATCHLIST_PATH)
     already_notified = reading_json(NOTIFIED_MOVIES_PATH)
+
     for title in available_movies:
         title_lower = title.lower()
         if any(wanted.lower() in title_lower for wanted in wanted_movies['movies']):
             if any(res.lower() in title_lower for res in wanted_movies['preferred_qualities']):
                 if title not in already_notified["movies"]:
                     match.append(title)
-    return match
+
+    return match, available_movies
 
 
 def saving_notified_movies(new_matches, file_path=NOTIFIED_MOVIES_PATH):
@@ -84,7 +91,7 @@ def mail_sender(movies_list):
         \n{formatted_titles}
 
         Enjoy your binge, maestro. CineScout’s always watching. 👁️🕊️
-        — CineScout v1.0
+        — CineScout v2.0
         """)
         try:
             with smtplib.SMTP("smtp.gmail.com") as connection:
@@ -108,11 +115,17 @@ def log_to_cron_output(message: str, log_file=LOG_PATH):
 
 def main():
     log_to_cron_output("CineScout has been launched")
-    matched_movies = find_matches()
-    # print(f"Scrapped Movies: {available_movies}")
-    # print(f"Wanted Movies: {wanted_movies}")
-    # print(f"Here the matched movies found : {matched_movies}")
-    mail_sender(matched_movies)
+    matched_movies, available_movies = find_matches()
+
+    if not available_movies:
+        # Already logged inside find_matches
+        return
+
+    if matched_movies:
+        mail_sender(matched_movies)
+    else:
+        log_to_cron_output("ℹ️ No matches found today.")
+
 
 
 if __name__ == "__main__":
